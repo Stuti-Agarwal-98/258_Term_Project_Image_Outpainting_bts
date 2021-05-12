@@ -3,8 +3,8 @@ import sys
 
 # Flask
 from flask import Flask, redirect, url_for, request, render_template, Response, jsonify, redirect
-from werkzeug.utils import secure_filename
-from gevent.pywsgi import WSGIServer
+# from werkzeug.utils import secure_filename
+# from gevent.pywsgi import WSGIServer
 
 # TensorFlow and tf.keras
 import tensorflow as tf
@@ -18,7 +18,7 @@ from tensorflow.keras.models import load_model
 # Some utilites
 import numpy as np
 #from util import base64_to_pil
-from PIL import Image
+import PIL
 # Declare a flask app
 app = Flask(__name__)
 
@@ -28,7 +28,7 @@ app = Flask(__name__)
 # or https://www.tensorflow.org/api_docs/python/tf/keras/applications
 
 
-outpainting_model = keras.models.load_model("./models/saved_model.pb")
+outpainting_model = keras.models.load_model("./models/")
 
 #plant_patho_labels = ["healthy", "multiple_diseases", "rust", "scab"]
 
@@ -62,28 +62,53 @@ def renorm_image(img_norm):
     return img_renorm
     
 def image_transform(image):
+    image_array = []
     img_size = (128,128)   
     #f = Image.open(r"C:\Users\stuti\258_flask\Deployment-flask\input_images\Places365_val_00000102.jpg") 
     img = crop_and_resize_image(image, img_size)
     numpy_img = img_to_array(img)
-    image_change = numpy_img/255
-    masked_image = get_masked_images(image_change,padding_width)
+    image_array.append(numpy_img)
+    imgs = np.asarray(image_array, dtype=np.float32)/255.0
+
+    masked_image = get_masked_images(imgs,padding_width)
     return masked_image
     
 
 @app.route('/')
 def home():
+    #get_img_path()
     return render_template('index.html')
 @app.route('/predict', methods=['POST'])
 def predict():
     if request.method == 'POST':
         # Get the image from post request
-        f = keras.preprocessing.image.load_img("./input_images/Places365_val_00000102.jpg")
+        f = keras.preprocessing.image.load_img("./static/input_images/Places365_val_00000012.jpg")
         outpainting_input_img = image_transform(f)
+        masked_image = renorm_image(outpainting_input_img)
+        input_image = PIL.Image.fromarray(masked_image[0],'RGB')
+        input_image.save("./input/output_pred.jpg")
+        print("Transformed Image")
         print(type(outpainting_model))
         outpainting_preds = outpainting_model.predict(outpainting_input_img)
         new_img = renorm_image(outpainting_preds)
-        final_pred_img = PIL.Image.fromarray(new_img,'RGB')
-        final_pred_img.save("./output/output_pred.jpg")
-        
+        final_pred_img = PIL.Image.fromarray(new_img[0],'RGB')
+        final_pred_img.save("./static/output/output_pred.jpg")
         return render_template('index.html', output_filename='./output/output_pred.jpg')
+
+# def test():
+
+#     f = keras.preprocessing.image.load_img("./static/input_images/Places365_val_00000012.jpg")
+#     outpainting_input_img = image_transform(f)
+#     masked_image = renorm_image(outpainting_input_img)
+#     input_image = PIL.Image.fromarray(masked_image[0],'RGB')
+#     input_image.save("./input/output_pred.jpg")
+#     print("Transformed Image")
+#     print(type(outpainting_model))
+#     outpainting_preds = outpainting_model.predict(outpainting_input_img)
+#     new_img = renorm_image(outpainting_preds)
+#     final_pred_img = PIL.Image.fromarray(new_img[0],'RGB')
+#     final_pred_img.save("./output/output_pred.jpg")
+    
+# test()
+if __name__ == "__main__":
+    app.run(debug=True)
