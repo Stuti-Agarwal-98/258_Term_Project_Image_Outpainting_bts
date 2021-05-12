@@ -81,6 +81,7 @@ def home():
 @app.route('/predict', methods=['POST'])
 def predict():
     if request.method == 'POST':
+        
         # Get the image from post request
         f = keras.preprocessing.image.load_img("./static/input_images/Places365_val_00000012.jpg")
         outpainting_input_img = image_transform(f)
@@ -92,6 +93,9 @@ def predict():
         outpainting_preds = outpainting_model.predict(outpainting_input_img)
         new_img = renorm_image(outpainting_preds)
         final_pred_img = PIL.Image.fromarray(new_img[0],'RGB')
+
+        # new_size = (256,256)
+        # final_pred_img = final_pred_img.resize(new_size)
         final_pred_img.save("./static/output/output_pred.jpg")
         return render_template('index.html', output_filename='./output/output_pred.jpg')
 

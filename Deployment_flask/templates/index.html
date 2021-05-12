@@ -18,11 +18,10 @@
 
      <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}"method="post">
-		    <input type="image" src="static/input_images/Places365_val_00000102.jpg" width="128" height="400"> 
-
+		    <input type="image" src="static/input_images/Places365_val_00000012.jpg" width="128" height="400"> 
         <button type="submit" class="btn btn-primary btn-block btn-large">outpainting</button>
+        <input type="image" src="static/output/output_pred.jpg" width="128" height="400">
     </form>
-     <img src="static/output/output_pred.jpg" alt="User Image" width="128" height="400">
    <br>
    <br>
 
