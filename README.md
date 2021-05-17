@@ -29,7 +29,10 @@
 
 ## Kubeflow deployment run graph
 
+![image](https://user-images.githubusercontent.com/11368304/118418921-40387900-b66f-11eb-869c-16596d780988.png)
+
 ##  Flask application Screenshot
+![image (1)](https://user-images.githubusercontent.com/11368304/118418967-737b0800-b66f-11eb-83b3-56b1c8b2d3dd.png)
 
 
 # Files uploaded:
