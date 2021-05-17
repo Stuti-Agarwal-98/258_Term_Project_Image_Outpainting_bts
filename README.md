@@ -38,18 +38,21 @@
 # Files uploaded:
 
 ## Flask Application and its code
+Can be found in Deployment_flask
+## BTS_outpainting.ipynb contains the models
 
-## Modelling ipynb file
-
-## TFX Pipeline ipynb file
+## BTS_Tfx_pipeline.ipynb
+TFX pipeline
 
 ## Kubeflow jupyter notebooks
+https://github.com/Stuti-Agarwal-98/258_Term_Project_Image_Outpainting_bts/tree/main/kubeflow
 
 ## Project Presentation
-
+https://github.com/Stuti-Agarwal-98/258_Term_Project_Image_Outpainting_bts/blob/main/Project%20Presentation_outpainting.pptx
 ## Project Report
-
-## Models
+https://github.com/Stuti-Agarwal-98/258_Term_Project_Image_Outpainting_bts/blob/main/258_project_report.pdf
 
 ## Dataset - Tfrecords file
 
+## Demo Video 
+https://drive.google.com/file/d/17mUnQQkKgO-QsjJuk38L1LOtBsmaO-fa/view?usp=sharing
