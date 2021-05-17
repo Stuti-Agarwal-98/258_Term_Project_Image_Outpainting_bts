@@ -57,6 +57,6 @@ https://github.com/Stuti-Agarwal-98/258_Term_Project_Image_Outpainting_bts/blob/
 ## Demo Video 
 https://drive.google.com/file/d/17mUnQQkKgO-QsjJuk38L1LOtBsmaO-fa/view?usp=sharing
 
-## Team Contribution
+
 ![image](https://user-images.githubusercontent.com/71077352/118420493-d66e9e00-b673-11eb-9e9f-7a226fd11bce.png)
 
