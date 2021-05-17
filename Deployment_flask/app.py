@@ -14,7 +14,7 @@ from keras.preprocessing.image import (ImageDataGenerator, array_to_img, img_to_
 from tensorflow.keras.applications.imagenet_utils import preprocess_input, decode_predictions
 from tensorflow.keras.models import load_model
 
-
+import time
 # Some utilites
 import numpy as np
 #from util import base64_to_pil
@@ -96,6 +96,7 @@ def predict():
 
         # new_size = (256,256)
         # final_pred_img = final_pred_img.resize(new_size)
+        time.sleep(4)
         final_pred_img.save("./static/output/output_pred.jpg")
         return render_template('index.html', output_filename='./output/output_pred.jpg')
 
