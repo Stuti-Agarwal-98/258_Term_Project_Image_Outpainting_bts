@@ -1,9 +1,9 @@
 # 258 TERM Project - Image Outpainting using GANs
-##  Problem Description - Image Out-painting is a computer vision problem and involves restoring the missing portions within an image.
-## Dataset - Places365 dataset
-## Input - images of size (256 * 256) resized to images of size (128 * 128)
-## Output - out-painted images of size (128 * 128)
-##  Architecture of the model
+### Problem Description - Image Out-painting is a computer vision problem and involves restoring the missing portions within an image.
+### Dataset - Places365 dataset
+### Input - images of size (256 * 256) resized to images of size (128 * 128)
+### Output - out-painted images of size (128 * 128)
+###  Architecture of the model
 ![image](https://user-images.githubusercontent.com/71077352/118418503-8c82b980-b66d-11eb-862a-52de0742b56f.png)
 
 
